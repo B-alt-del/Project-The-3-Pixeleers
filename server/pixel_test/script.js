@@ -36,7 +36,7 @@ function fill(){
 
         console.log("erasing selection")
 
-        $(this).css("background-color", 'rgb(0, 0, 0)')
+        $(this).css("background-color", 'rgb(255, 255, 255)')
 
     }else{
 
