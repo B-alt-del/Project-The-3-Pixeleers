@@ -22,3 +22,5 @@ function Footer() {
         </container></>
     );
 };
+
+export default Footer;
