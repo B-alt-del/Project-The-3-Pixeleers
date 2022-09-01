@@ -9,9 +9,10 @@ const resolvers = {
     },
 
     Mutation : {
-        async addUser(_, {email, password}, context) {
+        async addUser(_, {email, username, password}, context) {
             return await User.create ({
                 email,
+                username,
                 password
             });
         },
