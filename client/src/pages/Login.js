@@ -11,6 +11,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {useNavigate} from 'react-router-dom';
+
 
 function Copyright(props) {
   return (
@@ -25,9 +27,18 @@ function Copyright(props) {
   );
 }
 
+
+
 const theme = createTheme();
 
 export default function Login() {
+
+  const navigate = useNavigate();
+
+  function navigateHome() {
+    navigate('/')
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -102,6 +113,13 @@ export default function Login() {
                 sx={{ mt: 3, mb: 2 }}
               >
                 Sign In
+              </Button>
+              <Button onClick={navigateHome}
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Home
               </Button>
               <Grid container>
                 <Grid item xs>
