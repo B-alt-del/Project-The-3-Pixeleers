@@ -13,9 +13,9 @@ async function startServer(typeDefs, resolvers) {
     const server = new ApolloServer ({
         typeDefs,
         resolvers,
-        constext: {
-            hello: "Hello There!"
-        }
+        // context: {
+        //     hello: "Hello There!"
+        // }
     });
     
     await server.start();
@@ -25,7 +25,7 @@ async function startServer(typeDefs, resolvers) {
     db.once('open', () => {
         app.listen(PORT, () => {
             console.log('Express started on port %s', PORT);
-            console.log('GraphQL is ready on %s', server.graphqlaPath);
+            console.log('GraphQL is ready on %s', server.graphqlPath);
         })
     });
 }
