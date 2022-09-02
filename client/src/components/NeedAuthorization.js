@@ -1,4 +1,4 @@
-import { isAuthenticated } from '../utils/isAuthenticated';
+import { isAuthenticated } from '../utilities/isAuthenticated';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -10,8 +10,8 @@ function NeedAuthorization(props) {
     if (!isAuthenticated() && location.pathname.match(/create|dashboard/ig))
       navigate('/login');
 
-    if (isAuthenticated() && (location.pathname.match(/\/|auth-form/ig)))
-      navigate('/dashboard');
+    if (isAuthenticated() && (location.pathname.match(/\/|login/ig)))
+      navigate('/');
   }, []);
 
   return (
