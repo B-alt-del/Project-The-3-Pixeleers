@@ -50,18 +50,6 @@ const resolvers = {
                 throw new ApolloError(error, "it happened");
             }
         },
-        async deleteUser(_,{ email, password}, context) {
-            try {
-                const user = await User.delete({
-                    email,
-                    password
-                });
-                const token = signToken(user);
-                return{user, token};
-            }catch(error){
-                throw new ApolloError(error)
-            }
-        }
     }
 }
 
