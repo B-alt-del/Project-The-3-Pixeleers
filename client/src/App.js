@@ -1,5 +1,5 @@
 import { useState, useEffect} from 'react';
-import { isAuthenticated } from './utils/isAuthenticated';
+import { isAuthenticated } from './utilities/isAuthenticated';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -27,11 +27,11 @@ function App() {
       <Header logo={logo} user={user} />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home user= {user} />} />
 
         <Route path="/create" element={<NeedAuthorization>  <Create user = {user} />  </NeedAuthorization>} />
 
-        <Route path="/dashboard" element={<NeedAuthorization>  <Dashboard />  </NeedAuthorization>} />
+        <Route path="/dashboard" element={<NeedAuthorization>  <Dashboard user = {user} />  </NeedAuthorization>} />
 
         <Route path="/login" element={<NeedAuthorization>  <Login setUser = {setUser} />  </NeedAuthorization>} />
 
