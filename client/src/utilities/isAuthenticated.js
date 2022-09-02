@@ -5,7 +5,7 @@ export function isAuthenticated() {
 
   if (!token) return false;
 
-  const decoded = decode(token);
+  const decoded = decode(token);  //=> {header: , data: , sig}
 
-  if (decoded.exp > Date.now() / 1000) return decoded.data;
+  if (decoded.exp > Date.now() / 1000) return decoded.data;  
 }
