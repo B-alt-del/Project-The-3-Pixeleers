@@ -13,6 +13,11 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useNavigate} from 'react-router-dom';
 
+//----------------------------------------------added--------------------------------------------------
+import { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { ADD_USER, LOGIN_USER } from '../utilities/mutations';
+//----------------------------------------------^^^^^--------------------------------------------------
 
 function Copyright(props) {
   return (
@@ -27,12 +32,15 @@ function Copyright(props) {
   );
 }
 
-
-
 const theme = createTheme();
 
-export default function Login() {
+export default function Login(props) { // added props inside login
+  //-----------------------------------------------------------------added-----------------------------------------------
+    const [userInput, setUserInput] = useState({email:'', username: '', password: '', type: 'login'});
+    const [addUser] = useMutation(ADD_USER, {variables: userInput});
+    const [loginUser] = useMutation(LOGIN_USER, {variables: userInput});
 
+  //---------------------------------------------------------------------------------------------------------------------
   const navigate = useNavigate();
 
   function navigateHome() {
