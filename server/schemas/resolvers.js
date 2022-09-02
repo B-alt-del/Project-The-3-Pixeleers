@@ -28,6 +28,12 @@ const resolvers = {
                 throw new ApolloError(error)
             }
         },
+//----------------------------------------------------------------------------------------------------------
+        // updateUser
+
+        // deleteUser
+//----------------------------------------------------------------------------------------------------------
+
         async loginUser(_, { email, password }, context) {
             const user = await User.findOne({ email });
       
@@ -39,8 +45,9 @@ const resolvers = {
                 const token = signToken(user);
       
                 return { user, token };
+
             } catch(error){
-                throw new ApolloError(error);
+                throw new ApolloError(error, "it happened");
             }
         },
         async deleteUser(_,{ email, password}, context) {

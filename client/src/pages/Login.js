@@ -47,14 +47,37 @@ export default function Login(props) { // added props inside login
     navigate('/')
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    let user, token;
+    let mutation = userInput.type === 'register' ? addUser : loginUser;
+    let type = userInput.type === 'register' ? 'addUser' : 'loginUser';
+
+    const {data} = await mutation();
+
+    user = data[type].user;
+    token = data[type].token;
+
+    localStorage.setItem('token', token)
+    props.setUser(user);
+
+    navigate('/');
+
+    // const data = new FormData(event.currentTarget);
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
   };
+
+  const handleInputChange = (e) => {
+    setUserInput({...userInput, [e.target.name]: e.target.value})
+  }
+
+  const clickedRegister = () => {
+    setUserInput({...userInput, type: 'register'})
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -66,7 +89,7 @@ export default function Login(props) { // added props inside login
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random)',
+            backgroundImage: 'url(https://source.unsplash.com/random/art)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -87,7 +110,7 @@ export default function Login(props) { // added props inside login
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             </Avatar>
             <Typography component="h1" variant="h5">
-            <h2>Login</h2>
+            <h2>{userInput.type}</h2>
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
@@ -99,6 +122,18 @@ export default function Login(props) { // added props inside login
                 name="email"
                 autoComplete="email"
                 autoFocus
+                value={userInput.email}
+                onChange={handleInputChange}
+              />
+              <TextField
+                margin="normal"
+                fullWidth
+                id="username"
+                label="Username"
+                name="username"
+                autoFocus
+                value={userInput.username}
+                onChange={handleInputChange}
               />
               <TextField
                 margin="normal"
@@ -109,11 +144,13 @@ export default function Login(props) { // added props inside login
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={userInput.password}
+                onChange={handleInputChange}
               />
-              <FormControlLabel
+              {/* <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
-              />
+              /> */}
               <Button
                 type="submit"
                 fullWidth
@@ -122,13 +159,13 @@ export default function Login(props) { // added props inside login
               >
                 Sign In
               </Button>
-              <Button onClick={navigateHome}
+              {/* <Button onClick={navigateHome}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
                 Home
-              </Button>
+              </Button> */}
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
@@ -136,7 +173,7 @@ export default function Login(props) { // added props inside login
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="#" onClick={clickedRegister} variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>

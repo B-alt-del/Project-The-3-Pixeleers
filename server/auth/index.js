@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const {ApolloError} = require('apollo-server-express');
 
-const JWT_SECRET = 'z8QZoajeXO3qYBidnQf6k7ylOfCUttvd';
+const JWT_SECRET = 'z8QZoajeXO3qYBidnQf6k7ylOfCUttvd'; // add to .ENV file and use process.env
 
 module.exports = {
     authMiddleware({ req }) {
@@ -9,7 +9,7 @@ module.exports = {
 
         if(!token) return req;
 
-        if(!token.includes('Hacker')) {
+        if(!token.includes('Hacker')) {   //   'Bearer'  "Verify"   Hacker wuw3r98247y29trh29t294
             throw new ApolloError('invalid token');
         }
 
@@ -21,7 +21,9 @@ module.exports = {
             });
 
             req.user = data;
+
             return req;
+            
         } catch (error) {
             throw new ApolloError('decoding token unsuccessful');
         }
