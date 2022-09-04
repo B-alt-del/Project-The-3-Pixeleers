@@ -22,13 +22,13 @@ function HeaderBar(props) {
                 >
                     <MenuIcon />
                 </IconButton>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                <Typography variant="h8" component="div" sx={{ flexGrow: 1 }}>
                     <h1 >{props.logo}</h1>
                 </Typography>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/create">Create</NavLink>
-                <NavLink to="/login">Login</NavLink>
-                <NavLink to="/about">About</NavLink>
+                    <Box mr={2}><NavLink item xs to="/">Home</NavLink></Box> 
+                    <Box mr={2}><NavLink item xs to="/create">Create</NavLink></Box> 
+                    <Box mr={2}><NavLink item xs to="/login">Login</NavLink></Box> 
+                    <Box mr={2}><NavLink item xs to="/about">About</NavLink></Box> 
             </Toolbar>
         </AppBar>
     </Box>

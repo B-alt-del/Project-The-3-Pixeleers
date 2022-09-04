@@ -36,7 +36,7 @@ const theme = createTheme();
 
 export default function Login(props) { // added props inside login
   //-----------------------------------------------------------------added-----------------------------------------------
-    const [userInput, setUserInput] = useState({email:'', username: '', password: '', type: 'login'});
+    const [userInput, setUserInput] = useState({email:'', username: '', password: '', type: 'Login'});
     const [addUser] = useMutation(ADD_USER, {variables: userInput});
     const [loginUser] = useMutation(LOGIN_USER, {variables: userInput});
 
@@ -85,7 +85,7 @@ export default function Login(props) { // added props inside login
         <CssBaseline />
         <Grid
           item
-          xs={false}
+          xs={2}
           sm={4}
           md={7}
           sx={{
@@ -107,10 +107,15 @@ export default function Login(props) { // added props inside login
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <Avatar sx={{ m: 0, bgcolor: 'secondary.main' }}>
             </Avatar>
             <Typography component="h1" variant="h5">
-            <h2>{userInput.type}</h2>
+            <h2>{userInput.type} 
+              <Button onClick={clickedRegister}
+                variant="contained"
+                sx={{ mt: 3, mb: 4, ml: 10 }}
+              >Sign-Up</Button>
+            </h2>
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
@@ -159,23 +164,18 @@ export default function Login(props) { // added props inside login
               >
                 Sign In
               </Button>
-              {/* <Button onClick={navigateHome}
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Home
-              </Button> */}
-              <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
+              <Grid container >
+                <Grid item xs={6} sm={6} md={6} lg={6}>
+                  <Link href="#" variant="body2" sx={{ ml: 4 }} fullWidth>
                     Forgot password?
                   </Link>
                 </Grid>
-                <Grid item>
-                  <Link href="#" onClick={clickedRegister} variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
+                <Grid item xs>
+                  <Button onClick={navigateHome}
+                    variant="contained"
+                    fullWidth
+                    // sx={{ mr: 12}}
+                  >Go Home</Button>
                 </Grid>
               </Grid>
               <Copyright sx={{ mt: 5 }} />
