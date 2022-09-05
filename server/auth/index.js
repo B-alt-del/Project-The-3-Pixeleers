@@ -17,7 +17,7 @@ module.exports = {
 
         try {
             const {data} = jwt.decode(token, JWT_SECRET, {
-                maxAge: '10m'
+                maxAge: '1h'
             });
 
             req.user = data;
@@ -31,7 +31,7 @@ module.exports = {
 
     signToken(user_data) {
         return jwt.sign({ data: user_data }, JWT_SECRET, {
-            expiresIn: '10m'
+            expiresIn: '1h'
         });
     }
 }

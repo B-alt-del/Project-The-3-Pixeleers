@@ -9,6 +9,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import NeedAuthorization from './components/NeedAuthorization';
 import {Routes, Route} from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
   useEffect(() => {
     const data = isAuthenticated();
     if (data) setUser(data);
+    console.log(data)
   }, []);
 
 

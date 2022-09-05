@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.row {
+  display: flex;
+}
+
+/* 
+.MuiBox-root {
+  display: flex;
+  justify-content: center;
+} */
+
+#create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pixel {
+  width: 20px;
+  height: 20px;
+  border: .2px solid black;
+  background-color: rgb(255, 255, 255)  
+}
