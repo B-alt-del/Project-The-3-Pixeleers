@@ -76,7 +76,7 @@ export default function Login(props) { // added props inside login
   }
 
   const clickedRegister = () => {
-    setUserInput({...userInput, type: 'register'})
+    setUserInput({...userInput, type: 'Register'})
   }
 
   return (

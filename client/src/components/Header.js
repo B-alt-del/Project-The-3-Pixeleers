@@ -28,7 +28,7 @@ function HeaderBar(props) {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="relative" style={{ background: '#2E3B55' }}>
-                <Toolbar>
+                <Toolbar justifyContent={"space-around"}>
                     <Box
                         component="img"
                         sx={{ height: 54 }}
@@ -45,7 +45,6 @@ function HeaderBar(props) {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}
-                        textColor="white"
                     ><MenuIcon />
                     </Button>
                     <Menu
@@ -58,10 +57,18 @@ function HeaderBar(props) {
                         }}
                         TransitionComponent={Fade}
                     >
-                        <MenuItem><NavLink to="/" >Home</NavLink></MenuItem>
-                        <MenuItem><NavLink to="/create">Create</NavLink></MenuItem>
-                        <MenuItem><NavLink to="/login">Login</NavLink></MenuItem>
-                        <MenuItem><NavLink to="/about">About</NavLink></MenuItem>
+                        <MenuItem><NavLink to="/" style={isActive => ({
+                            color: isActive ? "#bd4250" : "Black", textDecoration: "none"
+                        })}>Home</NavLink></MenuItem>
+                        <MenuItem><NavLink to="/create" style={isActive => ({
+                            color: isActive ? "#bd4250" : "Black", textDecoration: "none"
+                        })}>Create</NavLink></MenuItem>
+                        <MenuItem><NavLink to="/login" style={isActive => ({
+                            color: isActive ? "#bd4250" : "Black", textDecoration: "none"
+                        })}>Login</NavLink></MenuItem>
+                        <MenuItem><NavLink to="/about" style={isActive => ({
+                            color: isActive ? "#bd4250" : "Black", textDecoration: "none"
+                        })}>About</NavLink></MenuItem>
                     </Menu>
                 </Toolbar>
             </AppBar>
