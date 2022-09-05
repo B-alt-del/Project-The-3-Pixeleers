@@ -13,7 +13,7 @@ import {Routes, Route} from 'react-router-dom';
 
 function App() {
 
-  const [logo, setLogo] = useState('The Pixeleers Logo');
+  const [logo, setLogo] = useState('Pixeleers');
   const [user, setUser] = useState(null);
 
   useEffect(() => {
