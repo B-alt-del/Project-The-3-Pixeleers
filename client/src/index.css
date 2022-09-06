@@ -22,10 +22,23 @@ code {
   justify-content: center;
 } */
 
+#Canvas {
+  padding:10%;
+  /* justify-content: ; */
+}
+
 #create {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#saveBtn {
+  background-color: darkgreen;
+}
+
+#deleteBtn {
+  background-color: crimson;
 }
 
 .pixel {

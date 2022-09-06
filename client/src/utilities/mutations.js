@@ -1,7 +1,14 @@
 import {gql} from '@apollo/client';
 
 //CREATE     UPDATE      READ      DELETE
-
+export const ADD_PXL = gql`
+    mutation addPXL($name: String, $width: String, $height: String, $colorArr: String!){
+        addPXL(name: $name, width: $width, height: $height, colorArr:$colorArr){
+                name
+                colorArr
+        }
+    }
+`;
 
 export const ADD_USER = gql`
     mutation addUser($email: String!, $username: String!, $password: String!){
