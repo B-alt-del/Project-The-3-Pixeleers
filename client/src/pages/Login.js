@@ -36,7 +36,7 @@ const theme = createTheme();
 
 export default function Login(props) { // added props inside login
   //-----------------------------------------------------------------added-----------------------------------------------
-    const [userInput, setUserInput] = useState({email:'', username: '', password: '', type: 'Login'});
+    const [userInput, setUserInput] = useState({email:'', username: '', password: '', type: 'login'});
     const [addUser] = useMutation(ADD_USER, {variables: userInput});
     const [loginUser] = useMutation(LOGIN_USER, {variables: userInput});
 
@@ -76,7 +76,7 @@ export default function Login(props) { // added props inside login
   }
 
   const clickedRegister = () => {
-    setUserInput({...userInput, type: 'Register'})
+    setUserInput({...userInput, type: 'register'})
   }
 
   return (
