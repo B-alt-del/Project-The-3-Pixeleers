@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.row {
+  display: flex;
+}
+
+/* 
+.MuiBox-root {
+  display: flex;
+  justify-content: center;
+} */
+
+#Canvas {
+  padding:10%;
+  /* justify-content: ; */
+}
+
+#create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#saveBtn {
+  background-color: darkgreen;
+}
+
+#deleteBtn {
+  background-color: crimson;
+}
+
+.pixel {
+  width: 20px;
+  height: 20px;
+  border: .2px solid black;
+  background-color: rgb(255, 255, 255)  
+}

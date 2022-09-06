@@ -7,6 +7,33 @@ const typeDefs = gql`
         email: String!
     }
 
+    type PXL {
+        _id: ID,
+        name: String,
+        width: String,
+        height: String
+        colorArr: String!
+        # colorArr: [Rows]
+    }
+
+    # type Rows {
+    #     # row: [{Color:String}]
+    #     row: [Cell]
+    # }
+
+    # type Cell {
+
+    #     Color:String
+    # }
+
+    # input PXLinput {
+    #     name: String,
+    #     width: String,
+    #     height: String
+    #     colorArr: String!
+    #     # colorArr: [Rows]
+    # }
+
     type Auth {
         user: User
         token: ID
@@ -14,9 +41,11 @@ const typeDefs = gql`
 
     type Query {
         getUsers: [User]
+        getPXLs: [PXL]
     }
 
     type Mutation {
+        addPXL( name: String, width: String, height: String, colorArr: String! ):  PXL
         addUser(email: String!, username: String!, password: String!): Auth
         loginUser(email: String, username: String, password: String!): Auth
     }
