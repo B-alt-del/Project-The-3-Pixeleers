@@ -3,14 +3,20 @@ import Canvas from "../components/createPXL/Canvas";
 import {useState} from 'react'
 import { Button, Modal, Box, Stack, Paper, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+// import { styled } from '@mui/material/styles';
+import { useMutation, useQuery } from '@apollo/client';
+import {ADD_PXL} from '../utilities/mutations'
+
 
 
 function Create(props) {
+  const [pixel_name, setPixel_name] = useState('New PXL');
+  const [pixel_Arr, setPixel_Arr] = useState([]);
   const [canvasWidth, setCanvasWidth] = useState(6);
   const [canvasHeight, setCanvasHeight] = useState(3);
   const [colorPallete, setColorPallete] =useState(['rgb(255, 0, 0)','rgb(255, 165, 0)', 'rgb(255, 255, 0)','rgb(0, 255, 0)','rgb(0, 0, 255','rgb(75, 0, 130)','rgb(148, 0, 211)']);
   const [Color, setColor] = useState('rgb(0, 255, 0)')
+  const [addPXL] =useMutation(useMutation(ADD_PXL, {variables: {name:pixel_name, colorArr: pixel_Arr}}))
   // const [PXL, setPXL] = useState([{}])
 
   let tempPXL = new Array(props.height);
@@ -23,9 +29,9 @@ function Create(props) {
 
   const [PXL_SAVED, setPXL_SAVED] = useState()
 
-  function changeColor(color){
-    setColor(color)
-  }
+  // function changeColor(color){
+  //   setColor(color)
+  // }
 
   // function handleOpen //
   const [open, setOpen] = React.useState(false);
