@@ -1,6 +1,7 @@
 const {User} = require('../models');
 const {signToken} = require('../auth');
 const {ApolloError} = require('apollo-server-express');
+const PXL = require('../models/PXL');
 
 const resolvers = {
     
@@ -10,6 +11,12 @@ const resolvers = {
                 throw new ApolloError('you are not authorized to do this, please login', 402);
             }
             return await User.find()
+        },
+        async getPXLs(_, args, context) {
+            // if(!context.user) {
+            //     throw new ApolloError('you are not authorized to do this, please login', 402);
+            // }
+            return await PXL.find()
         }
     },
 
@@ -50,6 +57,12 @@ const resolvers = {
                 throw new ApolloError(error, "it happened");
             }
         },
+
+        async addPXL(_, {name, colorArr, width, height}, context){
+
+            return await PXL.create({name,colorArr,width,height})
+        }
+        
     }
 }
 
