@@ -15,7 +15,8 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  // PXLs: []
 });
 
 userSchema.pre('save', async function () {

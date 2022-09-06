@@ -9,16 +9,20 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import NeedAuthorization from './components/NeedAuthorization';
 import {Routes, Route} from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import PXLS from './pages/PXLS';
+
 
 
 function App() {
 
-  const [logo, setLogo] = useState('The Pixeleers Logo');
+  const [logo, setLogo] = useState('Pixeleers');
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const data = isAuthenticated();
     if (data) setUser(data);
+    console.log(data)
   }, []);
 
 
@@ -30,6 +34,8 @@ function App() {
         <Route path="/" element={<Home user= {user} />} />
 
         <Route path="/create" element={<NeedAuthorization>  <Create user = {user} />  </NeedAuthorization>} />
+
+        <Route path="/PXLS" element= {<PXLS />} />
 
         <Route path="/dashboard" element={<NeedAuthorization>  <Dashboard user = {user} />  </NeedAuthorization>} />
 

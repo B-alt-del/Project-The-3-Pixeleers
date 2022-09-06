@@ -10,8 +10,8 @@ function NeedAuthorization(props) {
     if (!isAuthenticated() && location.pathname.match(/create|dashboard/ig))
       navigate('/login');
 
-    if (isAuthenticated() && (location.pathname.match(/\/|login/ig)))
-      navigate('/');
+    // if (isAuthenticated() && (location.pathname.match(/\/|login/ig)))
+    //   navigate('/');
   }, []);
 
   return (
@@ -22,4 +22,3 @@ function NeedAuthorization(props) {
 }
 
 export default NeedAuthorization;
-
