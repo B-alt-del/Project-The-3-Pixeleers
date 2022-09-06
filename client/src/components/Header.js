@@ -28,14 +28,14 @@ function HeaderBar(props) {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="relative" style={{ background: '#2E3B55' }}>
-                <Toolbar justifyContent={"space-around"}>
+                <Toolbar >
                     <Box
                         component="img"
                         sx={{ height: 54 }}
                         alt="Logo"
                         src={logo}
                     />
-                    <Typography variant="h8" component="div" sx={{ flexGrow: 1 }}>
+                    <Typography variant="h8" component="div" sx={{ flexGrow: 0.95 }}>
                         <h1 >{props.logo}</h1>
                     </Typography>
                     <Button

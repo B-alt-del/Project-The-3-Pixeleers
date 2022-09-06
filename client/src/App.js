@@ -20,6 +20,7 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    console.log('component loaded')
     const data = isAuthenticated();
     if (data) setUser(data);
     console.log(data)
