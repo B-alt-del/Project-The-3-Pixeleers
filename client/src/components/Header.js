@@ -11,10 +11,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Fade from '@mui/material/Fade'
 import MenuItem from '@mui/material/MenuItem';
 import logo from "../assets/logos/water-dragon.png"
+import { useEffect } from 'react';
 // import { User } from "../../../server/models";
+
 
 function HeaderBar(props) {
 
+    // const logout = window.localStorage.clear();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -24,10 +27,10 @@ function HeaderBar(props) {
         setAnchorEl(null);
     };
 
-
     return (
+
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="relative" style={{ background: '#2E3B55' }}>
+            <AppBar position="sticky" style={{ background: '#2E3B55' }}>
                 <Toolbar >
                     <Box
                         component="img"
@@ -72,6 +75,9 @@ function HeaderBar(props) {
                         <MenuItem><NavLink to="/about" style={isActive => ({
                             color: isActive ? "#bd4250" : "Black", textDecoration: "none"
                         })}>About</NavLink></MenuItem>
+                        <MenuItem><NavLink to="/" style={isActive => ({
+                            color: isActive ? "#bd4250" : "Black", textDecoration: "none"
+                        })}>Logout</NavLink></MenuItem>
                     </Menu>
                 </Toolbar>
             </AppBar>
