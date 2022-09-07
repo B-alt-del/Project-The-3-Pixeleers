@@ -3,15 +3,35 @@ import { useState } from "react";
 
 function Cell(props){ //props = {row: , column:  , Color:  }
 
-    let x = props.row;
-    let y = props.column
+                            let x = props.row;
+                            let y = props.column
 
-    let cellColor = props.colorArray[x][y].Color
+                            let color = props.colorArray
+    // console.log(color[0][0])
+    // console.log(props.colorArray[0][0])
+
+    // if(!(color[x][y].Color)){
+
+    //    return null;
+
+    // }else{
+    //     let cellColor = color.Color.Color
+
+// console.log(color[x][y])
+
+                let nil = (color[x][y]) ? (color[x][y]).Color : 'rgb(255, 255, 255)'
+        //    console.log(nil)
+
+
+        // let blah = cellColor ? cellColor : 'rgb(255, 255, 255)'
+
+    //        console.log(blah)
+    // // }
 
     return (
         <div 
             className="pixel"
-            style={{backgroundColor: cellColor}}
+            style={{backgroundColor: nil}}
         ></div>
     );
 };
