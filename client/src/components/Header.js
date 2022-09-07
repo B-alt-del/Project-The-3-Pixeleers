@@ -75,7 +75,7 @@ function HeaderBar(props) {
                         <MenuItem><NavLink to="/about" style={isActive => ({
                             color: isActive ? "#bd4250" : "Black", textDecoration: "none"
                         })}>About</NavLink></MenuItem>
-                        <MenuItem><NavLink to="/" style={isActive => ({
+                        <MenuItem><NavLink to="/" onClick={() => {window.localStorage.clear().then(window.location.reload())}} style={isActive => ({
                             color: isActive ? "#bd4250" : "Black", textDecoration: "none"
                         })}>Logout</NavLink></MenuItem>
                     </Menu>
