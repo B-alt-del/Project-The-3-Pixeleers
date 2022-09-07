@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -41,6 +42,16 @@ function About(props) {
           {/* </Container> */}
       </div>
       
+=======
+import Footer from "../components/Footer";
+
+function About(props) {
+    return (
+      <><div>
+        <h1>About Page</h1>
+      </div>
+      <Footer /></>
+>>>>>>> ebe270fd31b0c3a04d9d682e3ea8a1815888f53b
     )
   }
   
