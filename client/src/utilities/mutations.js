@@ -11,8 +11,8 @@ export const ADD_PXL = gql`
 `;
 
 export const DEL_PXL = gql`
-    mutation delPXL($_id: ID){
-        delPXL(_id:$_id){
+    mutation delPXL($id: String){
+        delPXL(id:$id){
             name
         }
     }

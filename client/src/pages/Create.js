@@ -8,8 +8,9 @@ import PXLS from './PXLS'
 import { color } from "@mui/system";
 import { Grid } from '@mui/material';
 
+
 function Create(props) {
-  const [PXLColorA, setPXLColorA] = useState("color")
+  const [PXLColorA, setPXLColorA] = useState("[[null,null,null,null,null,null],[null,null,null,null,null,null],[null,null,null,null,null,null]]")
   const [PXLName, setPXLName] = useState('New PXL title')
   const [canvasWidth, setCanvasWidth] = useState(6);
   const [canvasHeight, setCanvasHeight] = useState(3);

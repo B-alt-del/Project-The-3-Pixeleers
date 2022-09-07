@@ -27,7 +27,7 @@ const typeDefs = gql`
 
     type Mutation {
         addPXL( name: String, width: String, height: String, colorArr: String! ):  PXL
-        delPXL(_id: ID!): PXL
+        delPXL(id: String!): PXL
         addUser(email: String!, username: String!, password: String!): Auth
         loginUser(email: String, username: String, password: String!): Auth
     }
