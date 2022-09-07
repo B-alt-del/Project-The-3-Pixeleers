@@ -24,7 +24,21 @@ code {
 
 #Canvas {
   padding:10%;
-  /* justify-content: ; */
+  justify-content: space-between;
+}
+
+#boxOne {
+  justify-content: space-between;
+}
+
+#modalButtons {
+    /* vertical-align: auto; */
+    /* display: block; */
+    /* display: inline-block; */
+    /* background-color: brown; */
+    vertical-align: bottom;
+    align-items:center;
+    height: 100%;
 }
 
 #create {

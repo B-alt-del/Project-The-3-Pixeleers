@@ -13,6 +13,7 @@ export const GET_PXLS = gql`
         getPXLs{
             name
             colorArr
+            _id
         }
     }
 `
