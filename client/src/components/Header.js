@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Fade from '@mui/material/Fade'
 import MenuItem from '@mui/material/MenuItem';
-import logo from "./logos/water-dragon.png"
+import logo from "../assets/logos/water-dragon.png"
 // import { User } from "../../../server/models";
 
 function HeaderBar(props) {
@@ -28,15 +28,18 @@ function HeaderBar(props) {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="relative" style={{ background: '#2E3B55' }}>
-                <Toolbar justifyContent={"space-around"}>
+                <Toolbar >
                     <Box
                         component="img"
-                        sx={{ height: 54 }}
+                        sx={{ height: 64 }}
                         alt="Logo"
                         src={logo}
                     />
-                    <Typography variant="h8" component="div" sx={{ flexGrow: 1 }}>
-                        <h1 >{props.logo}</h1>
+                    <Typography variant="h8" component="div" sx={{ flexGrow: 0.95 }}>
+                        <h1 style={{
+                            marginLeft: "3%",
+                            fontFamily: "Sabon",
+                        }}>{props.logo}</h1>
                     </Typography>
                     <Button
                         id="fade-button"

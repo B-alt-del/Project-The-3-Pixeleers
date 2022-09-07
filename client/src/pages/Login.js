@@ -12,6 +12,8 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useNavigate} from 'react-router-dom';
+import { isAuthenticated } from '../utilities/isAuthenticated';
+
 
 //----------------------------------------------added--------------------------------------------------
 import { useState } from 'react';
@@ -60,7 +62,10 @@ export default function Login(props) { // added props inside login
     token = data[type].token;
 
     localStorage.setItem('token', token)
-    props.setUser(user);
+    console.log(user)
+    const userData = isAuthenticated();
+    props.setUser(userData);
+
 
     navigate('/');
 
@@ -110,7 +115,7 @@ export default function Login(props) { // added props inside login
             <Avatar sx={{ m: 0, bgcolor: 'secondary.main' }}>
             </Avatar>
             <Typography component="h1" variant="h5">
-            <h2>{userInput.type} 
+            <h2>{userInput.type.charAt(0).toUpperCase() + userInput.type.slice(1)} 
               <Button onClick={clickedRegister}
                 variant="contained"
                 sx={{ mt: 3, mb: 4, ml: 10 }}
