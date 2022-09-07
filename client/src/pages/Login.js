@@ -115,7 +115,7 @@ export default function Login(props) { // added props inside login
             <Avatar sx={{ m: 0, bgcolor: 'secondary.main' }}>
             </Avatar>
             <Typography component="h1" variant="h5">
-            <h2>{userInput.type} 
+            <h2>{userInput.type.charAt(0).toUpperCase() + userInput.type.slice(1)} 
               <Button onClick={clickedRegister}
                 variant="contained"
                 sx={{ mt: 3, mb: 4, ml: 10 }}
