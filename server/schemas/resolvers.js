@@ -61,6 +61,10 @@ const resolvers = {
         async addPXL(_, {name, colorArr, width, height}, context){
 
             return await PXL.create({name,colorArr,width,height})
+        },
+
+        async delPXL(_, {_id}, context){
+            return await PXL.deleteOne({_id})
         }
         
     }
