@@ -1,6 +1,12 @@
 
 import Display from "../components/displayPXL/Display"
-
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import { GET_PXLS } from '../utilities/queries';
 import { useMutation, useQuery } from '@apollo/client';
 import { useEffect } from 'react';
@@ -25,20 +31,50 @@ function PXLS() {
         console.log (parsed)
         let width = parsed[0].length
         let height = parsed.length
+        let name = information[i].name
+        // display_array.unshift(
+        //     <Display 
+        //         key = {i}
+        //         height={height}
+        //         width={width}
+              
+        //         colorArray={parsed}
+        //     />);
+
         display_array.unshift(
-            <Display 
+            <Card sx={{ maxWidth: 345 }}>
+      {/* <CardMedia> */}
+      <Display 
                 key = {i}
                 height={height}
                 width={width}
               
                 colorArray={parsed}
-            />);
+            />
+      
+      {/* </CardMedia> */}
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {name}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Lizards are a widespread group of squamate reptiles, with over 6,000
+          species, ranging across all continents except Antarctica
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Share</Button>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
+  );
 }
     return (
         <div id="display">
             <div> TESTIN PXLS DISPLAY PAGE</div>
             {display_array}
         </div>
+        
     )
 }
 
