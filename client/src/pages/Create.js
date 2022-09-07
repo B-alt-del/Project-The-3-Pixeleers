@@ -1,6 +1,6 @@
 import Canvas from "../components/createPXL/Canvas";
 import { useState } from 'react'
-import { Button, Modal, Box, Stack, Paper, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { Button, Modal, Box, Stack, TextField, MenuItem, Paper, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import * as React from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_PXL } from '../utilities/mutations'
@@ -16,6 +16,7 @@ function Create(props) {
   const [Color, setColor] = useState('rgb(0, 255, 0)')
   const [addPXL, { loading, data, error }] = useMutation(ADD_PXL, { variables: { name: PXLName, colorArr: PXLColorA } })
   const [count, setCount] = useState(1)
+  const dimensions = [4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
   const reset = () => {
     setCount(Math.random())
   }
@@ -41,6 +42,12 @@ function Create(props) {
     setOpen(true);
     console.log(tempPXL)
       ;
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+    reset();
+    const { data, error } = addPXL();
   }
 
   const handleClose = () => {
