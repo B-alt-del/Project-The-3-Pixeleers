@@ -146,8 +146,9 @@ function Create(props) {
   // const [PXL, setPXL] = useState([{}])
   
   React.useEffect(() => {
-      // PXLColorA
-  },[])
+      console.log('clicked')
+      
+  },[addPXL])
 
   let tempPXL = new Array(props.height);
   
