@@ -6,6 +6,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { ADD_PXL } from '../utilities/mutations'
 import PXLS from './PXLS'
 import { color } from "@mui/system";
+import { Grid } from '@mui/material';
 
 function Create(props) {
   const [PXLColorA, setPXLColorA] = useState("color")
@@ -16,7 +17,7 @@ function Create(props) {
   const [Color, setColor] = useState('rgb(0, 255, 0)')
   const [addPXL, { loading, data, error }] = useMutation(ADD_PXL, { variables: { name: PXLName, colorArr: PXLColorA } })
   const [count, setCount] = useState(1)
-  const dimensions = [4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+  const dimensions = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
   const reset = () => {
     setCount(Math.random())
   }
@@ -33,7 +34,6 @@ function Create(props) {
   function changeColor(event) {
     let colorString = event.target.attributes.data.nodeValue
     setColor(colorString)
-    // console.log(colorString)
   }
 
   // function handleOpen //
@@ -50,7 +50,6 @@ function Create(props) {
     const { data, error } = addPXL();
   }
 
-
   async function savePXL(event) {
     let newPXL = PXL[0]
     setPXL_SAVED(newPXL)
@@ -64,112 +63,145 @@ function Create(props) {
 
 
   return (
-    <div>
-      <div id='create'>
-        <h1>Create New PXL</h1>
-        <Button onClick={handleOpen}>Open modal</Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <Box id="boxOne" sx={{
-            display: "flex",
-            width: '90%',
-            height: '90%',
-            alignItems: "center",
+    <div id="main" style={{
+      display: "flex",
+      margin: "15px"
+    }}>
+      <div id="maincontainer" style={{
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+      }}>
+        {/* <div id="section1" style={{
+          display: "flex",
+          flexBasis: "100%",
+        }}>
+          <section id="templateArt">
+            Links to pixel art templates
+          </section>
+        </div> */}
+        <div id="section2" style={{
+          display: "flex",
+          flexDirection: "column",
+        }}>
+          <div id='create' style={{justifyContent: "space-around"}}>
+            <h1>PXL Dashboard</h1>
+            <p><Button onClick={handleOpen} variant="outlined">Create New PXL!</Button></p>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              sx={{
+                display: "flex",
+                justifyContent: "space-around",
+              }}
+            >
+              <Box id="boxOne" sx={{
+                display: "flex",
+                width: '90%',
+                height: '90%',
+                alignItems: "center",
 
-            backgroundColor: 'rgba(23,189,211, 75%)',
-            border: "2px solid black",
-          }}>
-            <Box sx={{
-              display: "flex",
-              width: '20%',
-              height: '100%',
-              // justifyContent: 'space-between',
-              alignItems: "center",
-              // margin: "10%",
-              // padding: "10%",
+                backgroundColor: 'rgba(23,189,211, 75%)',
+                border: "2px solid black",
+              }}>
+                <Box sx={{
+                  display: "flex",
+                  width: '20%',
+                  height: '100%',
+                  // justifyContent: 'space-between',
+                  alignItems: "center",
+                  // margin: "10%",
+                  // padding: "10%",
 
-              backgroundColor: 'rgba(0,135,153)',
-              border: "2px solid black",
-            }}>
+                  backgroundColor: 'rgba(0,135,153)',
+                  border: "2px solid black",
+                }}>
 
-              <Box sx={{ width: '100%' }}>
-                <Stack spacing={1}>
-                  {colorPallete.map((color, index) => (
-                    <ListItem sx={{ background: { color } }} key={index}>
-                      <ListItemButton data={color} onClick={changeColor} sx={{ backgroundColor: { color } }} >{color}</ListItemButton>
-                    </ListItem>))}
-                </Stack>
-              </Box>
+                  <Box sx={{ width: '100%' }}>
+                    <Stack spacing={1}>
+                      {colorPallete.map((color, index) => (
+                        <ListItem sx={{ background: { color } }} key={index}>
+                          <ListItemButton data={color} onClick={changeColor} sx={{ backgroundColor: { color } }} >{color}</ListItemButton>
+                        </ListItem>))}
+                    </Stack>
+                  </Box>
 
-            </Box>
+                </Box>
 
-            <Canvas
-              width={canvasWidth}
-              height={canvasHeight}
-              Color={Color}
-              PXL={PXL}
-              setPXL={setPXL} />
-            <div id="modalButtons">
-              <form >
-                <h1>Canvas Dimensions</h1>
+                <Canvas
+                  width={canvasWidth}
+                  height={canvasHeight}
+                  Color={Color}
+                  PXL={PXL}
+                  setPXL={setPXL} />
+                <div id="modalButtons">
+                  <form >
+                    <h1>Canvas Dimensions</h1>
 
-                {/* <input
-                value={todo_text} //canvas width
-                onChange={e => setTodoText(e.target.value)}
-                type="number"
-                placeholder="Enter your todo text" />
-              <button>Submit</button> */}
-                <div>
-                  <TextField
-                    id="widthInput"
-                    select
-                    label="Width"
+                    {/* <input
+                    value={todo_text} //canvas width
+                    onChange={e => setTodoText(e.target.value)}
                     type="number"
-                    value={canvasWidth}
-                    onChange={e => setCanvasWidth(e.target.value)}
-                    helperText="Width"
-                  >
-                    {dimensions.map((option) => (
-                      <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                  <TextField
-                    id="heightInput"
-                    select
-                    label="Height"
-                    value={canvasHeight}
-                    onChange={setCanvasHeight}
-                    helperText="Height"
-                  >
-                    {dimensions.map((option) => (
-                      <option key={option.valueOf} value={option.valueOf}>
-                      </option>
-                    ))}
-                  </TextField>
+                    placeholder="Enter your todo text" />
+                  <button>Submit</button> */}
+                    <div>
+                      <TextField
+                        id="widthInput"
+                        select
+                        label="Width"
+                        type="number"
+                        value={canvasWidth}
+                        onChange={e => setCanvasWidth(e.target.value)}
+                        helperText="Width"
+                      >
+                        {dimensions.map((option) => (
+                          <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                          </MenuItem>
+                        ))}
+                      </TextField>
+                      <TextField
+                        id="heightInput"
+                        select
+                        label="Height"
+                        value={canvasHeight}
+                        onChange={setCanvasHeight}
+                        helperText="Height"
+                      >
+                        {dimensions.map((option) => (
+                          <option key={option.valueOf} value={option.valueOf}>
+                          </option>
+                        ))}
+                      </TextField>
+                    </div>
+
+                  </form>
+                  <Button id="saveBtn" onClick={savePXL} > SAVE PROJECT </Button>
+                  <Button id="closeBtn" onClick={handleClose}> CLOSE </Button>
+                  {/* <Button id="delBtn" onClick={handleClose}> CLOSE </Button> */}
                 </div>
 
-              </form>
-              <Button id="saveBtn" onClick={savePXL} > SAVE PROJECT </Button>
-              <Button id="closeBtn" onClick={handleClose}> CLOSE </Button>
-              {/* <Button id="delBtn" onClick={handleClose}> CLOSE </Button> */}
-            </div>
-
-          </Box>
-        </Modal >
-      </div >
-      <PXLS key={count} />
+              </Box>
+            </Modal >
+          </div >
+          <div id="section3" style={{
+            display: "flex",
+            justifyContent: "space-evenly",
+          }}>
+            <section style={{
+              display: "flex"
+            }}>
+              <h3>Saved PXL Cards</h3>
+              <PXLS key={count} />
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
 
 export default Create;
+

@@ -44,7 +44,7 @@ function PXLS() {
         display_array.unshift(
             <Card sx={{ maxWidth: 345 }}>
       {/* <CardMedia> */}
-      <Display 
+      <Display
                 key = {i}
                 height={height}
                 width={width}
@@ -57,21 +57,17 @@ function PXLS() {
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
 }
     return (
-        <div id="display">
-            <div> TESTIN PXLS DISPLAY PAGE</div>
+        <div id="display" style={{
+          display: "flex",
+          flexFlow:"row",
+          flexWrap: "wrap",
+          margin: "1rem"
+          }}>
             {display_array}
         </div>
         
