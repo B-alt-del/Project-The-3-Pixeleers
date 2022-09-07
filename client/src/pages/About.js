@@ -29,13 +29,9 @@ function About(props) {
           {/* <Box sx={{ display: 'flex', justifyContent: 'center'}}> */}
             {/* <Typography>Vertical Align Center</Typography> */}
           {/* </Box> */}
-          <Box sx={{ display: 'flex', justifyContent:'center'}}>
+          <Box sx={{ display: 'flex', justifyContent:'center', color:'antiquewhite', background:'#2E3B55', position:'relative', paddingLeft:30, paddingRight:30, borderRadius:20, width:'auto'}}>
             <Typography variant="h4" gutterBottom>
-            Set the stage: Describe the industry problem that caused you to act.
-
-            Tackle the obstacle: Convey how you set out to address the issue and the challenges you faced along the way.
-            Introduce the solution: Mention how your company is pursuing its objectives and the pain points you intend to address.
-            Share the bigger picture: Share details of your future objectives or state your aims and mission.
+            We are developers that have been assigned multiple projects that need to be drawn out but not in the way you think. We have certain requirements that make us need to use pixelated NFTs to draw out our designs. We just could not find the right one so we thought our ourselves, why not make our own pixelated website that allows us to to use a grid with a multiple color selection and lets us fill in each square with the color of choice. Along with saving each project that is worked on with an account that is made.
             </Typography>
           </Box>
         
