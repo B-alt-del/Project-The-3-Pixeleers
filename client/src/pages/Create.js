@@ -5,27 +5,30 @@ import * as React from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_PXL } from '../utilities/mutations'
 import PXLS from './PXLS'
-import { color } from "@mui/system";
 
 function Create(props) {
   const [PXLColorA, setPXLColorA] = useState("color")
   const [PXLName, setPXLName] = useState('New PXL title')
-  const [canvasWidth, setCanvasWidth] = useState(6);
-  const [canvasHeight, setCanvasHeight] = useState(3);
+  const dimensions = [{value:4,label:'4'},{value:5,label:'5'},{value:6,label:'6'},{value:7,label:'7'},{value:8,label:'8'},{value:9,label:'9'},{value:10,label:'10'}]
+  const [dimensionW, setDimensionW] = useState(10)
+  const [dimensionH, setDimensionH] = useState(10)
+  const [canvasWidth, setCanvasWidth] = useState(10);
+  const [canvasHeight, setCanvasHeight] = useState(10);
   const [colorPallete, setColorPallete] = useState(['rgb(255, 0, 0)', 'rgb(255, 165, 0)', 'rgb(255, 255, 0)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255', 'rgb(75, 0, 130)', 'rgb(148, 0, 211)']);
   const [Color, setColor] = useState('rgb(0, 255, 0)')
   const [addPXL, { loading, data, error }] = useMutation(ADD_PXL, { variables: { name: PXLName, colorArr: PXLColorA } })
   const [count, setCount] = useState(1)
-  const dimensions = [4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+
   const reset = () => {
     setCount(Math.random())
   }
 
-  let tempPXL = new Array(props.height);
-
-  for (var i = 0; i < canvasHeight; i++) {
-    tempPXL[i] = new Array(canvasWidth);
-  }
+    let tempPXL = new Array(canvasWidth);
+  
+    for (var i = 0; i < canvasHeight; i++) {
+      tempPXL[i] = new Array(canvasWidth);
+    }
+    
 
   const [PXL, setPXL] = useState([tempPXL])
   const [PXL_SAVED, setPXL_SAVED] = useState()
@@ -61,6 +64,20 @@ function Create(props) {
     console.log('Title: ', PXLName)
     console.log('Colors: ', PXLColorA)
   }
+
+  const [currency, setCurrency] = React.useState('EUR');
+
+  const buttonSelectionW = (event) => {
+    console.log("width change")
+    setDimensionW(event);
+    setCanvasWidth(event)
+  };
+
+  const buttonSelectionH = (event) => {
+    console.log("height change")
+    setDimensionH(event);
+    setCanvasHeight(event)
+  };
 
 
   return (
@@ -118,8 +135,17 @@ function Create(props) {
               PXL={PXL}
               setPXL={setPXL} />
             <div id="modalButtons">
-              <form >
-                <h1>Canvas Dimensions</h1>
+              {/* <form > */}
+              <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '10ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+
+                <h1 style={{paddingRight:'15px'}}>Canvas Dimensions</h1>
 
                 {/* <input
                 value={todo_text} //canvas width
@@ -133,10 +159,10 @@ function Create(props) {
                     select
                     label="Width"
                     type="number"
-                    value={canvasWidth}
-                    onChange={e => setCanvasWidth(e.target.value)}
+                    value={dimensionW}
+                    onChange={e => buttonSelectionW(e.target.value)}
                     helperText="Width"
-                  >
+                    >
                     {dimensions.map((option) => (
                       <MenuItem key={option.value} value={option.value}>
                         {option.label}
@@ -147,18 +173,21 @@ function Create(props) {
                     id="heightInput"
                     select
                     label="Height"
-                    value={canvasHeight}
-                    onChange={setCanvasHeight}
+                    type="number"
+                    value={dimensionH}
+                    onChange={e => buttonSelectionH(e.target.value)}
                     helperText="Height"
-                  >
+                    >
                     {dimensions.map((option) => (
-                      <option key={option.valueOf} value={option.valueOf}>
-                      </option>
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
                     ))}
                   </TextField>
                 </div>
+                    </Box>
 
-              </form>
+              {/* </form> */}
               <Button id="saveBtn" onClick={savePXL} > SAVE PROJECT </Button>
               <Button id="closeBtn" onClick={handleClose}> CLOSE </Button>
               {/* <Button id="delBtn" onClick={handleClose}> CLOSE </Button> */}

@@ -9,9 +9,21 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { GET_PXLS } from '../utilities/queries';
 import { useMutation, useQuery } from '@apollo/client';
+import { DEL_PXL } from '../utilities/mutations'
+
+
 import { useEffect } from 'react';
 
 function PXLS() {
+    const [deletedPXLid, setDeletedPXLid] = React.useState()
+    const [delPXL, { loading:lo , data:da , error:er }] = useMutation(DEL_PXL)
+
+
+     function DeletePixel(e){
+        let pxlID = e.target.attributes.data.value
+        setDeletedPXLid(pxlID)
+         delPXL({ variables: { _id : pxlID} })
+    }
 
     const { data, loading, error } = useQuery(GET_PXLS)
 
@@ -32,6 +44,7 @@ function PXLS() {
         let width = parsed[0].length
         let height = parsed.length
         let name = information[i].name
+        let pxlID = information[i]._id
         // display_array.unshift(
         //     <Display 
         //         key = {i}
@@ -43,31 +56,31 @@ function PXLS() {
 
         display_array.unshift(
             <Card sx={{ maxWidth: 345 }}>
-      {/* <CardMedia> */}
-      <Display 
-                key = {i}
-                height={height}
-                width={width}
-              
-                colorArray={parsed}
-            />
-      
-      {/* </CardMedia> */}
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {name}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-  );
+                {/* <CardMedia> */}
+                <Display
+                    key={i}
+                    height={height}
+                    width={width}
+
+                    colorArray={parsed}
+                />
+
+                {/* </CardMedia> */}
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        Lizards are a widespread group of squamate reptiles, with over 6,000
+                        species, ranging across all continents except Antarctica
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Button size="small">Share</Button>
+                    <Button size="small" data={pxlID} onClick={DeletePixel}>DELETE</Button>
+                </CardActions>
+            </Card>
+        );
 }
     return (
         <div id="display">
