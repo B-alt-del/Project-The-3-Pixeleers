@@ -13,26 +13,7 @@ const typeDefs = gql`
         width: String,
         height: String
         colorArr: String!
-        # colorArr: [Rows]
     }
-
-    # type Rows {
-    #     # row: [{Color:String}]
-    #     row: [Cell]
-    # }
-
-    # type Cell {
-
-    #     Color:String
-    # }
-
-    # input PXLinput {
-    #     name: String,
-    #     width: String,
-    #     height: String
-    #     colorArr: String!
-    #     # colorArr: [Rows]
-    # }
 
     type Auth {
         user: User
@@ -46,6 +27,7 @@ const typeDefs = gql`
 
     type Mutation {
         addPXL( name: String, width: String, height: String, colorArr: String! ):  PXL
+        delPXL(_id: ID!): PXL
         addUser(email: String!, username: String!, password: String!): Auth
         loginUser(email: String, username: String, password: String!): Auth
     }

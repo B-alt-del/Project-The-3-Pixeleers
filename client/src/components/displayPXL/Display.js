@@ -9,9 +9,10 @@ function Display(props){ // {width,height,Color}
         rows.push(
             <Row 
                 key= {i} 
-                column={i}
+                row={i}
                 width={props.width} 
                 height={props.height}
+                // row={}
                 // Color={props.Color}
                 colorArray={props.colorArray}
 
@@ -33,7 +34,6 @@ function Display(props){ // {width,height,Color}
             <div id="rows">
                 {rows}
             </div>
-            {/* <Button onClick={logPXL}>Console.Log</Button> */}
         </div>
     );
 }

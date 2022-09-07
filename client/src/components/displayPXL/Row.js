@@ -9,11 +9,11 @@ function Row(props){
         cells_array.push(
             <Cell 
                 key={i} 
-                row={props.column} 
+                row={props.row} 
                 column={i} 
                 // PXL={props.PXL}
-                width={props.width}
-                height={props.height}
+                // row={props.row}
+                ////height={props.height}
                 // setTestCells={props.setTestCells} 
                 // setPXL={props.setPXL}
                 // test_cells={props.test_cells}

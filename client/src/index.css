@@ -1,19 +1,19 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
 
 .row {
-  display: flex;
+	display: flex;
 }
 
 /* 
@@ -24,21 +24,35 @@ code {
 
 #Canvas {
   padding:10%;
-  /* justify-content: ; */
+  justify-content: space-between;
+}
+
+#boxOne {
+  justify-content: space-between;
+}
+
+#modalButtons {
+    /* vertical-align: auto; */
+    /* display: block; */
+    /* display: inline-block; */
+    /* background-color: brown; */
+    vertical-align: bottom;
+    align-items:center;
+    height: 100%;
 }
 
 #create {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #saveBtn {
-  background-color: darkgreen;
+	background-color: darkgreen;
 }
 
 #deleteBtn {
-  background-color: crimson;
+	background-color: crimson;
 }
 
 .pixel {
@@ -46,4 +60,5 @@ code {
   height: 20px;
   border: .2px solid black;
   background-color: rgb(255, 255, 255)  
+
 }

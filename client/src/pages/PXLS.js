@@ -1,30 +1,89 @@
 
-import { useState, useEffect } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
-import { ADD, LOGIN_USER } from '../utilities/mutations';
-// import { UserInputError } from "apollo-server-express"
 import Display from "../components/displayPXL/Display"
-// import { ADD_PXL} from '../utilities/mutations';
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import { GET_PXLS } from '../utilities/queries';
-// import { set } from 'mongoose';
+import { useMutation, useQuery } from '@apollo/client';
+import { useEffect } from 'react';
+
+function PXLS() {
+
+    const { data, loading, error } = useQuery(GET_PXLS)
+
+    if (loading||error) {
+        return(null)
+    }
+    
+    const information = data.getPXLs;
+    let display_array = [];
+
+    for(let i = 0; i < information.length; i++) {
+        // console.log(information)
+        // console.log(information.length)
+        
+        console.log(information[i].colorArr)
+        let parsed = JSON.parse(information[i].colorArr) 
+        console.log (parsed)
+        let width = parsed[0].length
+        let height = parsed.length
+        let name = information[i].name
+        // display_array.unshift(
+        //     <Display 
+        //         key = {i}
+        //         height={height}
+        //         width={width}
+              
+        //         colorArray={parsed}
+        //     />);
+
+        display_array.unshift(
+            <Card sx={{ maxWidth: 345 }}>
+      {/* <CardMedia> */}
+      <Display
+                key = {i}
+                height={height}
+                width={width}
+              
+                colorArray={parsed}
+            />
+      
+      {/* </CardMedia> */}
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {name}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
+}
+    return (
+        <div id="display" style={{
+          display: "flex",
+          flexFlow:"row",
+          flexWrap: "wrap",
+          margin: "1rem"
+          }}>
+            {display_array}
+        </div>
+        
+    )
+}
+
+export default PXLS
 
 
-// let TEST1 = [  [{Color: "rgb(0, 0, 0)"},{},{Color: "rgb(61, 255, 242"}]  ,  [{Color: "rgb(61, 255, 242"},{},{Color: "rgb(0, 0, 0)"}]  ]
-// let TEST2 = [  [{Color: "rgb(255, 0, 0)"},{},{Color: "rgb(255, 255, 0"}]  ,  [{Color: "rgb(61, 255, 242"},{},{Color: "rgb(0, 0, 0)"}]  ]
-// let TEST3 = [  [{Color: "rgb(0, 0, 0)"},{},{},{Color: "rgb(61, 255, 242"}]  ,  [{Color: "rgb(61, 255, 242"},{},{},{Color: "rgb(0, 0, 0)"}],[{Color: "rgb(61, 255, 242"},{},{},{Color: "rgb(0, 0, 0)"}]  ]
-// let color_arrays = [TEST1,TEST2,TEST3]
-// let color_arrays = [TEST1,TEST2,TEST3]
+      
+        
 
 
-function PXLS(){
-    const [pxl_array, setPxl] = useState([])
-
-    const blah = useQuery(GET_PXLS)
-
-    setPxl(blah.data.getPXLs)
-    console.log(blah)
-    console.log(blah.data)
-    console.log(blah.data.getPXLs)
+    // setPxl(blah.data.getPXLs)
+    // console.log(blah.data)
+    // console.log(blah.data.getPXLs)
 //   const { loading, data } = useQuery(QUERY_THOUGHTS);
 
     // const pxl_array = blah.data.getPXLs
@@ -112,17 +171,17 @@ function PXLS(){
     //         />);
     // }
 
-    return(
-        <div>
-            <div> TESTIN PXLS DISPLAY PAGE</div>
-            {/* <button onClick={addPxl}>ADD ONE PXL</button> */}
-            {/* <button onClick={GETpxls}>GET <PXLS></PXLS></button> */}
-            {/* {display_array}     */}
+//     return(
+//         <div>
+//             <div> TESTIN PXLS DISPLAY PAGE</div>
+//             {/* {/* <button onClick={addPxl}>ADD ONE PXL</button> */}
+//             {/* <button onClick={GETpxls}>GET <PXLS></PXLS></button> */}
+//             {/* {display_array}      */}
             
     
-        </div>
-        )
+//         </div>
+//         )
 
-}
+// }
 
-export default PXLS
+// export default PXLS

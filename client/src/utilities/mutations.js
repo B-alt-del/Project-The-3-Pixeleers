@@ -10,6 +10,14 @@ export const ADD_PXL = gql`
     }
 `;
 
+export const DEL_PXL = gql`
+    mutation delPXL($_id: ID){
+        delPXL(_id:$_id){
+            name
+        }
+    }
+`
+
 export const ADD_USER = gql`
     mutation addUser($email: String!, $username: String!, $password: String!){
         addUser(email: $email, username: $username, password: $password){

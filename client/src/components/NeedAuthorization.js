@@ -12,7 +12,7 @@ function NeedAuthorization(props) {
 
     // if (isAuthenticated() && (location.pathname.match(/\/|login/ig)))
     //   navigate('/');
-  }, []);
+  }, [location.pathname]);
 
   return (
     <>
