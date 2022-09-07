@@ -95,6 +95,7 @@ function Create(props) {
             justifyContent: "center",
           }}
         >
+          <h1>NEW PXL</h1>
           <Box id="boxOne" sx={{
             display: "flex",
             width: '90%',
